@@ -5,3 +5,27 @@
  ::name
  (fn [db]
    (:name db)))
+
+(defn find-division [db div]
+  (filter #(= div (:division %)) (:teams db))
+  )
+(re-frame/reg-sub
+  ::nfcNorth
+  (fn [db]
+    (find-division db "NFC North")))
+
+(re-frame/reg-sub
+  ::nfcEast
+  (fn [db]
+    (find-division db "NFC East")))
+
+(re-frame/reg-sub
+  ::nfcWest
+  (fn [db]
+    (find-division db "NFC West")))
+
+(re-frame/reg-sub
+  ::nfcSouth
+  (fn [db]
+    (find-division db "NFC South")))
+
