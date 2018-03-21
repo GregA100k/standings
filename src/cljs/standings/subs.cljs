@@ -29,3 +29,19 @@
   (fn [db]
     (find-division db "NFC South")))
 
+(re-frame/reg-sub
+  ::team1
+  (fn [db _] (get db :team1)))
+
+(re-frame/reg-sub
+  ::score1
+  (fn [db _] (get db :score1)))
+
+(re-frame/reg-sub
+  ::team2
+  (fn [db _] (get db :team2)))
+
+(re-frame/reg-sub
+  ::score2
+  (fn [db _] (get db :score2)))
+

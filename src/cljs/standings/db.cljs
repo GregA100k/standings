@@ -2,6 +2,10 @@
 
 (def default-db
   {:name "re-frame"
+   :team1 "a"
+   :team2 "b"
+   :score1 "c"
+   :score2 "d"
    :teams [{:name "Packers" :division "NFC North" :wins 0 :losses 0}
            {:name "Vikings" :division "NFC North" :wins 0 :losses 0}
            {:name "Bears" :division "NFC North" :wins 0 :losses 0}
