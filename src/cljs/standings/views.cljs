@@ -3,16 +3,41 @@
             [standings.subs :as subs]
             ))
 
+
+(defn draw-division [ml name] 
+  ;(js/alert (str "drawing division " name))
+  [:div name [:ul (map (fn [m] [:li (str (:name m) "  " (:wins m) " " (:losses m))]) ml)]])
+
+(defn draw-nfcWest []
+  (let [
+        nfcWest (re-frame/subscribe [::subs/nfcWest])
+       ]
+     (draw-division @nfcWest "West")
+     ))
+
+(defn draw-nfcNorth []
+  (let [
+        nfcNorth (re-frame/subscribe [::subs/nfcNorth])
+       ]
+     (draw-division @nfcNorth "North")))
+
+(defn draw-nfcEast []
+  (let [
+        nfcEast (re-frame/subscribe [::subs/nfcEast])
+       ]
+     (draw-division @nfcEast "East")))
+
+(defn draw-nfcSouth []
+  (let [
+        nfcSouth (re-frame/subscribe [::subs/nfcSouth])
+       ]
+     (draw-division @nfcSouth "South")))
+
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])
         nfcNorth (re-frame/subscribe [::subs/nfcNorth])
         nfcEast (re-frame/subscribe [::subs/nfcEast])
-        nfcWest (re-frame/subscribe [::subs/nfcWest])
         nfcSouth (re-frame/subscribe [::subs/nfcSouth])
-        draw-list-entry (fn [m] [:li (str (:name m) "  " (:wins m) " " (:losses m))])
-        draw-division (fn [ml name] 
-                        ;(js/alert (str "drawing division " name))
-                        [:div name [:ul (map (fn [m] [:li (str (:name m) "  " (:wins m) " " (:losses m))]) ml)]])
         ]
 
     ;[:div "Hello from " @name]
@@ -44,9 +69,9 @@
                   }]
        ]
      ]
-     (draw-division @nfcWest "West")
-     (draw-division @nfcNorth "North")
-     (draw-division @nfcEast "East")
-     (draw-division @nfcSouth "South")
+     [draw-nfcWest]
+     [draw-nfcNorth]
+     [draw-nfcEast]
+     [draw-nfcSouth]
     ]
     ))
