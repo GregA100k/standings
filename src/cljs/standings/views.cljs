@@ -35,9 +35,6 @@
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])
-        nfcNorth (re-frame/subscribe [::subs/nfcNorth])
-        nfcEast (re-frame/subscribe [::subs/nfcEast])
-        nfcSouth (re-frame/subscribe [::subs/nfcSouth])
         ]
 
     ;[:div "Hello from " @name]
